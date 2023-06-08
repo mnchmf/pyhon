@@ -19,7 +19,7 @@ class Test(unittest.TestCase):
         solver_sr1 = Solver()
         solver_bfgs.solve_sr1(Examples.quad1, x0, 10**-8, 10**-12, 100)
         utils.contour(Examples.quad1, solver_gd._positions, solver_nm._positions, solver_bfgs._positions, solver_sr1._positions, [-2, 2], [-2, 2], "x1^2 + x2^2")
-        utils.plot(solver_gd._values, solver_sr1._values, solver_bfgs._values, solver_sr1._values)
+        utils.plot(solver_gd._values, solver_nm._values, solver_bfgs._values, solver_sr1._values)
 
     def test2(self):
         x0 = np.array([1, 1])
@@ -32,7 +32,7 @@ class Test(unittest.TestCase):
         solver_sr1 = Solver()
         solver_sr1.solve_sr1(Examples.quad2, x0, 10**-8, 10**-12, 100)
         utils.contour(Examples.quad2, solver_gd._positions, solver_nm._positions, solver_bfgs._positions, solver_sr1._positions, [-2, 2], [-2, 2], "x1^2 + 100x2^2")
-        utils.plot(solver_gd._values, solver_sr1._values, solver_bfgs._values, solver_sr1._values)
+        utils.plot(solver_gd._values, solver_nm._values, solver_bfgs._values, solver_sr1._values)
 
     def test3(self):
         x0 = np.array([1, 1])
@@ -45,7 +45,7 @@ class Test(unittest.TestCase):
         solver_sr1 = Solver()
         solver_sr1.solve_sr1(Examples.quad3, x0, 10**-8, 10**-12, 100)
         utils.contour(Examples.quad3, solver_gd._positions, solver_nm._positions, solver_bfgs._positions, solver_sr1._positions, [-3, 3], [-3, 3], "100x1^2 + x2^2 rotated 30 degrees" )
-        utils.plot(solver_gd._values, solver_sr1._values, solver_bfgs._values, solver_sr1._values)
+        utils.plot(solver_gd._values, solver_nm._values, solver_bfgs._values, solver_sr1._values)
 
 
     def test4(self):
@@ -59,7 +59,7 @@ class Test(unittest.TestCase):
         solver_sr1 = Solver()
         solver_sr1.solve_sr1(Examples.rosenbork, x0, 10**-8, 10**-12, 1000)
         utils.contour(Examples.rosenbork, solver_gd._positions, solver_nm._positions, solver_bfgs._positions, solver_sr1._positions, [-1.5, 1.5], [-.5, 2.1], "Rosenborck 2 degree")
-        utils.plot(solver_gd._values, solver_sr1._values, solver_bfgs._values, solver_sr1._values)
+        utils.plot(solver_gd._values, solver_nm._values, solver_bfgs._values, solver_sr1._values)
 
 
     def test5(self):
@@ -80,7 +80,7 @@ class Test(unittest.TestCase):
         solver_sr1 = Solver()
         solver_sr1.solve_sr1(Examples.exponent, x0, 10**-8, 10**-12, 100)
         utils.contour(Examples.exponent, solver_gd._positions, solver_nm._positions, solver_bfgs._positions, solver_sr1._positions, [-3, 3], [-3, 3], "exp(x1 -3x2 - 0.1) + exp(x1 - 3x2 - 0.1) + exp(-x1 - 0.1)")
-        utils.plot(solver_gd._values, solver_sr1._values, solver_bfgs._values, solver_sr1._values)
+        utils.plot(solver_gd._values, solver_nm._values, solver_bfgs._values, solver_sr1._values)
 
 
 
