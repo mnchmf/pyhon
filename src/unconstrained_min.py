@@ -14,6 +14,12 @@ class Solver:
             return True
         return False
 
+    @staticmethod
+    def _check_convergence_nm(x_prev, x_next, f_prev, f_next, obj_tol, param_tol, g, h):
+        if abs(g.T @ h @ g) < obj_tol or np.linalg.norm(x_next - x_prev) < param_tol:
+            return True
+        return False
+
     def solve_gd(self, func, x0, obj_tol, param_tol, max_iter):
         self._positions = []
         self._values = []
@@ -49,7 +55,7 @@ class Solver:
         x_prev = x0
         success = False
         i = 0
-        f_prev, g, h = func(x_prev, False)
+        f_prev, g, h = func(x_prev, True)
 
         self._positions.append(x_prev)
         self._values.append(f_prev)
@@ -58,10 +64,10 @@ class Solver:
             direction = -np.linalg.solve(h, g)
             step_len = Solver.get_step_len_gd(x_prev, func, direction, f_prev)
             x_next = x_prev + direction * step_len
-            f_next, g, h = func(x_next, False)
+            f_next, g, h = func(x_next, True)
 
             i += 1
-            success = Solver._check_convergence(x_prev, x_next, f_prev, f_next, obj_tol, param_tol)
+            success = Solver._check_convergence_nm(x_prev, x_next, f_prev, f_next, obj_tol, param_tol, g, h)
             x_prev = x_next
             f_prev = f_next
             print('iter', i)

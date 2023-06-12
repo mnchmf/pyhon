@@ -44,7 +44,7 @@ class Test(unittest.TestCase):
         solver_bfgs.solve_bfgs(Examples.quad3, x0, 10**-8, 10**-12, 100)
         solver_sr1 = Solver()
         solver_sr1.solve_sr1(Examples.quad3, x0, 10**-8, 10**-12, 100)
-        utils.contour(Examples.quad3, solver_gd._positions, solver_nm._positions, solver_bfgs._positions, solver_sr1._positions, [-3, 3], [-3, 3], "100x1^2 + x2^2 rotated 30 degrees" )
+        utils.contour(Examples.quad3, solver_gd._positions, solver_nm._positions, solver_bfgs._positions, solver_sr1._positions, [-3, 3], [-3, 3], "100x1^2 + x2^2 rotated 30 degrees")
         utils.plot(solver_gd._values, solver_nm._values, solver_bfgs._values, solver_sr1._values)
 
 
