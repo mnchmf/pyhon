@@ -69,7 +69,61 @@ class Examples:
 
         return f, g, h
 
+    @staticmethod
+    def ex1(X):
+        x = X[0]
+        y = X[1]
+        z = X[2]
+        f = x**2 + y**2 + (z + 1)**2
+        g = np.array([2*x, 2*y, 2*z + 2])
+        h = np.array([[2, 0, 0], [0, 2, 0], [0, 0, 2]])
 
+        return f, g, h
+
+    def ex1h1(X):
+        x = X[0]
+        return -x, np.array([-1, 0, 0]), np.zeros((3, 3))
+
+    def ex1h2(X):
+        y = X[1]
+        return -y, np.array([0, -1, 0]), np.zeros((3, 3))
+
+    def ex1h3(X):
+        z = X[2]
+        return -z, np.array([0, 0, -1]), np.zeros((3, 3))
+
+
+    @staticmethod
+    def ex2(X):
+        x = X[0]
+        y = X[1]
+        f = -x + -y
+        g = np.array([-1, -1])
+        h = np.array([[0, 0], [0, 0]])
+
+        return f, g, h
+
+    # x <= 2
+    def ex2h1(X):
+        x = X[0]
+        return x - 2, np.array([1, 0]), np.zeros((2, 2))
+
+    # y < = 1
+    def ex2h2(X):
+        y = X[1]
+
+        return y - 1, np.array([0, 1]), np.zeros((2, 2))
+
+    # y > = 0
+    def ex2h3(X):
+        y = X[1]
+        return -y, np.array([0, -1]), np.zeros((2, 2))
+
+   #𝑦 ≥ −𝑥 + 1
+    def ex2h4(X):
+        y = X[1]
+        x = X[0]
+        return -y - x + 1, np.array([-1, -1]), np.zeros((2, 2))
 
 
 

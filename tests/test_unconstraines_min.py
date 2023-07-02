@@ -3,6 +3,7 @@ from src.unconstrained_min import Solver
 from tests.examples import Examples
 import numpy as np
 from src import utils
+from src.constrained_min import ConstrainedSolver
 
 
 class Test(unittest.TestCase):
@@ -81,6 +82,13 @@ class Test(unittest.TestCase):
         solver_sr1.solve_sr1(Examples.exponent, x0, 10**-8, 10**-12, 100)
         utils.contour(Examples.exponent, solver_gd._positions, solver_nm._positions, solver_bfgs._positions, solver_sr1._positions, [-3, 3], [-3, 3], "exp(x1 -3x2 - 0.1) + exp(x1 - 3x2 - 0.1) + exp(-x1 - 0.1)")
         utils.plot(solver_gd._values, solver_nm._values, solver_bfgs._values, solver_sr1._values)
+
+    def test_cp(self):
+        x0 = np.array([0.1, 0.2, 0.7])
+        solver = ConstrainedSolver()
+        solver.interior_pt(Examples.ex1, [Examples.ex1h1, Examples.ex1h2, Examples.ex1h3], np.array([[1, 1, 1]]), np.array([1]), x0)
+        print(solver._positions)
+        print(solver._values)
 
 
 
